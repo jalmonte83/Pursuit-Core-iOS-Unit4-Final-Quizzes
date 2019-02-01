@@ -1,5 +1,5 @@
 //
-//  SearchViewController.swift
+//  QuizzDetailViewController.swift
 //  Quizzes
 //
 //  Created by Jeffrey Almonte on 2/1/19.
@@ -8,11 +8,10 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class QuizzDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .blue
 
         // Do any additional setup after loading the view.
     }
