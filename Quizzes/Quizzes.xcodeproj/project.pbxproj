@@ -20,6 +20,8 @@
 		0DBE7B1C2204F52000B97D7D /* QuizzDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBE7B1B2204F52000B97D7D /* QuizzDetailViewController.swift */; };
 		0DBE7B1E2204FDC300B97D7D /* QuizzCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBE7B1D2204FDC300B97D7D /* QuizzCell.swift */; };
 		0DBE7B202204FDD300B97D7D /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBE7B1F2204FDD300B97D7D /* SearchCell.swift */; };
+		0DBE7B2322052BB300B97D7D /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBE7B2222052BB300B97D7D /* SearchModel.swift */; };
+		0DBE7B2622052D2100B97D7D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBE7B2522052D2100B97D7D /* APIClient.swift */; };
 		577118C12203796A00B9DD0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577118C02203796A00B9DD0B /* AppDelegate.swift */; };
 		577118C82203796B00B9DD0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 577118C72203796B00B9DD0B /* Assets.xcassets */; };
 		577118CB2203796B00B9DD0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 577118C92203796B00B9DD0B /* LaunchScreen.storyboard */; };
@@ -44,6 +46,8 @@
 		0DBE7B1B2204F52000B97D7D /* QuizzDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzDetailViewController.swift; sourceTree = "<group>"; };
 		0DBE7B1D2204FDC300B97D7D /* QuizzCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzCell.swift; sourceTree = "<group>"; };
 		0DBE7B1F2204FDD300B97D7D /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		0DBE7B2222052BB300B97D7D /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		0DBE7B2522052D2100B97D7D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		577118BD2203796A00B9DD0B /* Quizzes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quizzes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		577118C02203796A00B9DD0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		577118C72203796B00B9DD0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,6 +105,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		0DBE7B2422052C8E00B97D7D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0DBE7B2222052BB300B97D7D /* SearchModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		577118B42203796A00B9DD0B = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +132,7 @@
 		577118BF2203796A00B9DD0B /* Quizzes */ = {
 			isa = PBXGroup;
 			children = (
+				0DBE7B2422052C8E00B97D7D /* Models */,
 				0DBE7B092204B3F500B97D7D /* ViewControllers */,
 				0DBE7B142204F3EC00B97D7D /* Views */,
 				0DBE7B212204FDDE00B97D7D /* Cells */,
@@ -136,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				577118D422037A9F00B9DD0B /* AppError.swift */,
+				0DBE7B2522052D2100B97D7D /* APIClient.swift */,
 				577118D622037ABA00B9DD0B /* NetworkHelper.swift */,
 			);
 			path = "Network Services";
@@ -241,10 +255,12 @@
 				0DBE7B1E2204FDC300B97D7D /* QuizzCell.swift in Sources */,
 				0DBE7B0D2204B4EC00B97D7D /* SearchViewController.swift in Sources */,
 				577118D722037ABA00B9DD0B /* NetworkHelper.swift in Sources */,
+				0DBE7B2322052BB300B97D7D /* SearchModel.swift in Sources */,
 				0DBE7B182204F4C400B97D7D /* QuizzDetailView.swift in Sources */,
 				0DBE7B202204FDD300B97D7D /* SearchCell.swift in Sources */,
 				0DBE7B112204F30C00B97D7D /* QuizzesView.swift in Sources */,
 				0DBE7B1C2204F52000B97D7D /* QuizzDetailViewController.swift in Sources */,
+				0DBE7B2622052D2100B97D7D /* APIClient.swift in Sources */,
 				0DBE7B0F2204DCD100B97D7D /* TabBarViewController.swift in Sources */,
 				577118C12203796A00B9DD0B /* AppDelegate.swift in Sources */,
 				0DBE7B0B2204B43300B97D7D /* CreateViewController.swift in Sources */,

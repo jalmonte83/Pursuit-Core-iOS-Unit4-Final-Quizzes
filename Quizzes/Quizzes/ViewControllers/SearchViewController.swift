@@ -9,23 +9,26 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
+    
+    var searchInfo = [SearchModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .blue
-
-        // Do any additional setup after loading the view.
+        getQuizzInfo()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getQuizzInfo() {
+        APIClient.getQuiz { (appError, searchData) in
+            if let appError = appError {
+                print(appError.errorMessage())
+            } else if let data = searchData {
+                self.searchInfo = data
+                dump(data)
+            }
+        }
     }
-    */
-
+    
+    
+    
 }

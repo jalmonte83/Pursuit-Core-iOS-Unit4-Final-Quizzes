@@ -31,7 +31,7 @@ class QuizzesViewController: UIViewController {
 
 extension QuizzesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -47,4 +47,5 @@ extension QuizzesViewController: UICollectionViewDelegateFlowLayout {
    // func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
      //<#code#>
     //}
+   
 }

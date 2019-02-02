@@ -9,17 +9,18 @@
 import UIKit
 
 class QuizzCell: UICollectionViewCell {
-    lazy var quizzTopicTextView: UITextView = {
-        let tv = UITextView()
+    
+    lazy var quizzTopicLabel: UILabel = {
+        let tv = UILabel()
         tv.text = "Topic goes here"
         tv.textAlignment = .center
-        tv.isEditable = false
-        tv.textColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+        tv.numberOfLines = 4
         return tv
     }()
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
+        addSubview(quizzTopicLabel)
         setupQuizzTopic()
     }
     
@@ -28,9 +29,10 @@ class QuizzCell: UICollectionViewCell {
     }
     
     private func setupQuizzTopic() {
-        addSubview(quizzTopicTextView)
-        quizzTopicTextView.translatesAutoresizingMaskIntoConstraints = false
-        quizzTopicTextView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
-        quizzTopicTextView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
+        quizzTopicLabel.translatesAutoresizingMaskIntoConstraints = false
+        quizzTopicLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
+        quizzTopicLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
+        
+        
     }
 }
