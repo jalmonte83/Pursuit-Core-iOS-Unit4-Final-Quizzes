@@ -18,10 +18,18 @@ class QuizzCell: UICollectionViewCell {
         return tv
     }()
     
+    lazy var addItemButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "more-filled"), for: .normal)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         addSubview(quizzTopicLabel)
+        addSubview(addItemButton)
         setupQuizzTopic()
+        setupAddButton()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,7 +40,11 @@ class QuizzCell: UICollectionViewCell {
         quizzTopicLabel.translatesAutoresizingMaskIntoConstraints = false
         quizzTopicLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
         quizzTopicLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
-        
-        
+    }
+    
+    private func setupAddButton() {
+        addItemButton.translatesAutoresizingMaskIntoConstraints = false
+        addItemButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 12).isActive = true
+        addItemButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -11).isActive = true
     }
 }

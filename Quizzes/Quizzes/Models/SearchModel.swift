@@ -14,3 +14,4 @@ struct SearchModel: Codable {
     let facts: [String]
     
 }
+
