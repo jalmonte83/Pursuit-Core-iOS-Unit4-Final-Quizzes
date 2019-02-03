@@ -44,8 +44,20 @@ extension QuizzesViewController: UICollectionViewDataSource {
 }
 
 extension QuizzesViewController: UICollectionViewDelegateFlowLayout {
-   // func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-     //<#code#>
-    //}
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        //let quizzToSegue = bookInfoForCollectionView[indexPath.row]
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) as? QuizzCell else {
+            print("didSelectItemAt cell nil")
+            return
+        }
+        let detailedVC = QuizzDetailViewController()
+      //  detailedVC.bookInDetail = quizzToSegue
+        //detailedVC.imageForDetailed = cell.imageCover.image
+       // detailedVC.descriptionFromGoodle = descriptionFromGoogle
+        navigationController?.pushViewController(detailedVC, animated: true)
+        
+    }
    
 }
