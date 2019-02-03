@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .purple
         self.view.addSubview(profileView)
-        // Do any additional setup after loading the view.
+        navigationItem.title = "Profile"
     }
     
     

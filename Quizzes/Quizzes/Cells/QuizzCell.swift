@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol MoreActionsDelegate: AnyObject {
+    func moreActionsButtonPressed()
+}
+
 class QuizzCell: UICollectionViewCell {
+    
+    var delegate: MoreActionsDelegate?
     
     lazy var quizzTopicLabel: UILabel = {
         let label = UILabel()

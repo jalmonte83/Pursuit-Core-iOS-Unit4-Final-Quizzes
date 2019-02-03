@@ -19,6 +19,7 @@ class CreateViewController: UIViewController {
         view.addSubview(createView)
         navigationItem.title = "Create Quizz"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(createQuizz))
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelCreate))
     }
     
@@ -29,9 +30,10 @@ class CreateViewController: UIViewController {
     }
     
     @objc func cancelCreate() {
-        dismiss(animated: true) {
- self.resignFirstResponder()
-        }
+        createView.quizTitleTextField.text = ""
+        createView.factOne.text = ""
+        createView.factTwo.text = ""
+        //createView.
     }
     
 }

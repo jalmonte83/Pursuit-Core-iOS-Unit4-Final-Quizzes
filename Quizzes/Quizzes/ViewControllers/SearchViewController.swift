@@ -22,8 +22,10 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = .blue
         self.view.addSubview(searchQuizzesView)
+        navigationItem.title = "Search Quizzes Online"
         self.searchQuizzesView.searchQuizzesCollectionView.register(SearchCell.self, forCellWithReuseIdentifier: "SearchCell")
         searchQuizzesView.searchQuizzesCollectionView.dataSource = self
         getQuizzInfo()
@@ -54,6 +56,7 @@ extension SearchViewController: UICollectionViewDataSource {
         let cellInfo = searchInfo[indexPath.row]
         cell.backgroundColor = .white
         cell.searchQuizzTopicLabel.text = cellInfo.quizTitle
+        //cell.addItemButton.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
         return cell
     }
     
