@@ -10,12 +10,35 @@ import UIKit
 
 class SearchQuizzesView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    lazy var searchQuizzesCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 190, height: 250)
+        layout.sectionInset = UIEdgeInsets.init(top: 20, left: 10, bottom: 20, right: 10)
+        layout.scrollDirection = .vertical
+        
+        let collectionView = UICollectionView.init(frame: self.bounds, collectionViewLayout: layout)
+        collectionView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        
+        return collectionView
+        
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: UIScreen.main.bounds)
+        
+        addSubview(searchQuizzesCollectionView)
+        collectionViewConstraints()
     }
-    */
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func collectionViewConstraints() {
+        searchQuizzesCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        searchQuizzesCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+        searchQuizzesCollectionView.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor).isActive = true
+        searchQuizzesCollectionView.widthAnchor.constraint(equalTo: widthAnchor).isActive =  true
+        
+    }
 }

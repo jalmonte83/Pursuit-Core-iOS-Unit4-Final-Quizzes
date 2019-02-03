@@ -13,6 +13,9 @@ class ProfileView: UIView {
     lazy var profileImageButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "profile-unfilled"), for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
+        button.showsTouchWhenHighlighted = true
+        
         return button
     }()
     
@@ -25,8 +28,8 @@ class ProfileView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
-        addSubview(profileImageButton)
-        addSubview(userNameLabel)
+        self.backgroundColor = .blue
+        
         setupProfileButton()
         setupUserNameLabel()
     }
@@ -36,12 +39,14 @@ class ProfileView: UIView {
     }
     
     private func setupProfileButton() {
+        addSubview(profileImageButton)
         profileImageButton.translatesAutoresizingMaskIntoConstraints = false
         profileImageButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         profileImageButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
     
     private func setupUserNameLabel() {
+        addSubview(userNameLabel)
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
         userNameLabel.topAnchor.constraint(equalTo: profileImageButton.bottomAnchor, constant: 16).isActive = true
         userNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true

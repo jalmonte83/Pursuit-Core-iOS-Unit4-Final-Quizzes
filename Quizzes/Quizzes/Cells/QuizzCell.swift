@@ -11,11 +11,11 @@ import UIKit
 class QuizzCell: UICollectionViewCell {
     
     lazy var quizzTopicLabel: UILabel = {
-        let tv = UILabel()
-        tv.text = "Topic goes here"
-        tv.textAlignment = .center
-        tv.numberOfLines = 4
-        return tv
+        let label = UILabel()
+        label.text = "Topic goes here"
+        label.textAlignment = .center
+        label.numberOfLines = 4
+        return label
     }()
     
     lazy var addItemButton: UIButton = {
@@ -26,8 +26,7 @@ class QuizzCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
-        addSubview(quizzTopicLabel)
-        addSubview(addItemButton)
+        
         setupQuizzTopic()
         setupAddButton()
     }
@@ -37,12 +36,14 @@ class QuizzCell: UICollectionViewCell {
     }
     
     private func setupQuizzTopic() {
+        addSubview(quizzTopicLabel)
         quizzTopicLabel.translatesAutoresizingMaskIntoConstraints = false
         quizzTopicLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
         quizzTopicLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
     }
     
     private func setupAddButton() {
+        addSubview(addItemButton)
         addItemButton.translatesAutoresizingMaskIntoConstraints = false
         addItemButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 12).isActive = true
         addItemButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -11).isActive = true

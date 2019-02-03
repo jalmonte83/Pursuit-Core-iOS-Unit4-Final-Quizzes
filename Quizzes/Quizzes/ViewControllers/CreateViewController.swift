@@ -9,15 +9,18 @@
 import UIKit
 
 class CreateViewController: UIViewController {
-
+    
+    let createView = CreateQuizzesView()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .green
-
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = .gray
+        view.addSubview(createView)
+        
     }
     
-
-   
-
+    
+    
+    
 }

@@ -11,10 +11,14 @@ import UIKit
 class SearchViewController: UIViewController {
     
     var searchInfo = [SearchModel]()
+    let searchQuizzesView = SearchQuizzesView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .blue
+        self.view.addSubview(searchQuizzesView)
+        self.searchQuizzesView.searchQuizzesCollectionView.register(SearchCell.self, forCellWithReuseIdentifier: "SearchCell")
+        searchQuizzesView.searchQuizzesCollectionView.dataSource = self
         getQuizzInfo()
     }
     
@@ -29,6 +33,20 @@ class SearchViewController: UIViewController {
         }
     }
     
+    
+    
+}
+
+extension SearchViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = searchQuizzesView.searchQuizzesCollectionView.dequeueReusableCell(withReuseIdentifier: "SearchCell", for: indexPath) as? SearchCell else { return UICollectionViewCell() }
+        cell.backgroundColor = .white
+        return cell
+    }
     
     
 }
