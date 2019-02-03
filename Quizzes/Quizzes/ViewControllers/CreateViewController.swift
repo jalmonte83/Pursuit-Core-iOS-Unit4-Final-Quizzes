@@ -17,10 +17,21 @@ class CreateViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .gray
         view.addSubview(createView)
-        
+        navigationItem.title = "Create Quizz"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(createQuizz))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelCreate))
     }
     
     
     
+    @objc func createQuizz() {
+        
+    }
+    
+    @objc func cancelCreate() {
+        dismiss(animated: true) {
+ self.resignFirstResponder()
+        }
+    }
     
 }

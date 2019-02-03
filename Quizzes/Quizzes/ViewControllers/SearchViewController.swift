@@ -10,8 +10,15 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    var searchInfo = [SearchModel]()
-    let searchQuizzesView = SearchQuizzesView()
+    var searchQuizzesView = SearchQuizzesView()
+    var searchInfo = [SearchModel]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.searchQuizzesView.searchQuizzesCollectionView.reloadData()
+            }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +46,14 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return searchInfo.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = searchQuizzesView.searchQuizzesCollectionView.dequeueReusableCell(withReuseIdentifier: "SearchCell", for: indexPath) as? SearchCell else { return UICollectionViewCell() }
+        let cellInfo = searchInfo[indexPath.row]
         cell.backgroundColor = .white
+        cell.searchQuizzTopicLabel.text = cellInfo.quizTitle
         return cell
     }
     

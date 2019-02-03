@@ -9,7 +9,7 @@
 import UIKit
 
 class CreateQuizzesView: UIView {
-
+    
     lazy var quizTitleTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter question here"
@@ -28,7 +28,7 @@ class CreateQuizzesView: UIView {
         textView.text = "Enter fact here"
         return textView
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         
@@ -57,7 +57,7 @@ class CreateQuizzesView: UIView {
         factOne.topAnchor.constraint(equalTo: quizTitleTextField.bottomAnchor, constant: 11).isActive = true
         factOne.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 11).isActive = true
         factOne.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -11).isActive = true
-        factOne.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.35).isActive = true
+        factOne.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.30).isActive = true
     }
     
     func secondFactConstraint() {
@@ -66,6 +66,6 @@ class CreateQuizzesView: UIView {
         factTwo.topAnchor.constraint(equalTo: factOne.bottomAnchor, constant: 11).isActive = true
         factTwo.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 11).isActive = true
         factTwo.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -11).isActive = true
-        factTwo.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.35).isActive = true
+        factTwo.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.30).isActive = true
     }
 }

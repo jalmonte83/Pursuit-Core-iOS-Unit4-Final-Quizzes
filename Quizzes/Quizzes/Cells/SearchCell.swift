@@ -39,6 +39,9 @@ class SearchCell: UICollectionViewCell {
         searchQuizzTopicLabel.translatesAutoresizingMaskIntoConstraints = false
         searchQuizzTopicLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
         searchQuizzTopicLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
+        searchQuizzTopicLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        searchQuizzTopicLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor).isActive = true 
+        
     }
     
     private func setupAddButton() {

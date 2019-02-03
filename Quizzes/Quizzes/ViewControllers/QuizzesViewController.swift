@@ -53,9 +53,7 @@ extension QuizzesViewController: UICollectionViewDelegateFlowLayout {
             return
         }
         let detailedVC = QuizzDetailViewController()
-      //  detailedVC.bookInDetail = quizzToSegue
-        //detailedVC.imageForDetailed = cell.imageCover.image
-       // detailedVC.descriptionFromGoodle = descriptionFromGoogle
+      
         navigationController?.pushViewController(detailedVC, animated: true)
         
     }

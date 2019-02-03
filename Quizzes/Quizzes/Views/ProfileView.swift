@@ -28,7 +28,7 @@ class ProfileView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
-        self.backgroundColor = .blue
+        self.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         
         setupProfileButton()
         setupUserNameLabel()
