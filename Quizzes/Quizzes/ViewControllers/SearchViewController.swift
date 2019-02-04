@@ -56,9 +56,33 @@ extension SearchViewController: UICollectionViewDataSource {
         let cellInfo = searchInfo[indexPath.row]
         cell.backgroundColor = .white
         cell.searchQuizzTopicLabel.text = cellInfo.quizTitle
-        //cell.addItemButton.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
+        cell.addItemButton.addTarget(self, action: #selector(actionButtonPressed(_:)), for: .touchUpInside)
+        cell.addItemButton.tag = indexPath.row
+        
+        cell.addItemButton.addTarget(self, action: #selector(actionButtonPressed(_:)), for: .touchUpInside)
         return cell
     }
+    
+    @objc func actionButtonPressed(_ sender: UIButton) {
+        
+        
+        
+        let index = sender.tag
+        
+            
+            
+            
+            
+            let alert = UIAlertController.init(title: "Quiz saved to \"My Quizzes\" ", message: nil, preferredStyle: .alert)
+            let ok = UIAlertAction.init(title: "Ok", style: .default) { (UIAlertAction) in
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+        }
+
+        
+       
     
     
 }
