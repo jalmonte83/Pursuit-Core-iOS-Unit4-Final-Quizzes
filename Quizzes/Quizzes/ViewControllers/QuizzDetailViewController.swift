@@ -20,6 +20,7 @@ class QuizzDetailViewController: UIViewController {
 self.view.backgroundColor = .white
         self.view.addSubview(quizzDetailView)
         self.quizzDetailView.quizzDetailCollectionView.dataSource = self
+        self.quizzDetailView.quizzDetailCollectionView.delegate = self
         self.quizzDetailView.quizzDetailCollectionView.register(QuizzesDetailCell.self, forCellWithReuseIdentifier: "QuizzesDetailCell")
         
         if let array = quizSentFromMain?.facts{
@@ -42,6 +43,25 @@ extension QuizzDetailViewController: UICollectionViewDataSource {
         cell.quizzDetails.text = quizSentFromMain?.quizTitle
         return cell
     }
-    
-    
+}
+
+extension QuizzDetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = quizzDetailView.quizzDetailCollectionView.cellForItem(at: indexPath) as? QuizzesDetailCell else {
+            print("didselctItemAt cell nil")
+            return
+        }
+        
+        if indexPath.row == 0 {
+            UIView.transition(with: cell, duration: 1.0, options: .transitionFlipFromLeft, animations: {
+                cell.quizzDetails.text = self.arrayOfFacts[0]
+                
+            })
+        } else if indexPath.row == 1{
+            UIView.transition(with: cell, duration: 1.0, options: .transitionFlipFromLeft, animations: {
+                cell.quizzDetails.text = self.arrayOfFacts[1]
+                
+            })
+        }
+    }
 }
