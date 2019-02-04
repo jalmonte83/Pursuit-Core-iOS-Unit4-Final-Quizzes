@@ -20,7 +20,7 @@ class QuizzCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Topic goes here"
         label.textAlignment = .center
-        label.numberOfLines = 4
+        label.numberOfLines = 0
         return label
     }()
     
@@ -51,6 +51,8 @@ class QuizzCell: UICollectionViewCell {
         quizzTopicLabel.translatesAutoresizingMaskIntoConstraints = false
         quizzTopicLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
         quizzTopicLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
+        quizzTopicLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -11).isActive = true
+        quizzTopicLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 11).isActive = true
     }
     
     private func setupDeleteButton() {

@@ -10,6 +10,10 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    var titleForSegueCards = ""
+    var factsFromOnlineData = [String]()
+    var onlineId = ""
+    
     var searchQuizzesView = SearchQuizzesView()
     var searchInfo = [SearchModel]() {
         didSet {
@@ -58,25 +62,64 @@ extension SearchViewController: UICollectionViewDataSource {
         cell.searchQuizzTopicLabel.text = cellInfo.quizTitle
         cell.addItemButton.tag = indexPath.row
         cell.addItemButton.addTarget(self, action: #selector(addButtonPressed(_:)), for: .touchUpInside)
+        
+        self.titleForSegueCards = cellInfo.quizTitle
+        self.factsFromOnlineData = cellInfo.facts
+        self.onlineId = cellInfo.id
+        
+        
         return cell
     }
     
     @objc func addButtonPressed(_ sender: UIButton) {
         
-            
-            
-            
-            
-            let alert = UIAlertController.init(title: "Quiz saved to \"My Quizzes\" ", message: nil, preferredStyle: .alert)
-            let ok = UIAlertAction.init(title: "Ok", style: .default) { (UIAlertAction) in
-                self.dismiss(animated: true, completion: nil)
-            }
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
-        }
-
         
-       
+        let objectToSave = UserQuizzModel.init(id: onlineId, quizTitle: titleForSegueCards, facts: factsFromOnlineData, createdAt: Date.getISOTimestamp())
+        
+        UserQuizzDataManager.addEntry(quiz: objectToSave)
+        
+        
+        let objectSaved = UIAlertController.init(title: "Quiz was saved", message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction.init(title: "Ok", style: .default) { (UIAlertAction) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        objectSaved.addAction(ok)
+        present(objectSaved, animated: true, completion: nil)
+        
+//
+//        let alert = UIAlertController.init(title: "Quiz saved to \"My Quizzes\" ", message: nil, preferredStyle: .alert)
+//        let ok = UIAlertAction.init(title: "Ok", style: .default) { (UIAlertAction) in
+//            self.dismiss(animated: true, completion: nil)
+//        }
+//        alert.addAction(ok)
+//        present(alert, animated: true, completion: nil)
+    }
     
     
 }
+
+//extension SearchViewController: UICollectionViewDelegateFlowLayout {
+//
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let cell = searchQuizzesView.searchQuizzesCollectionView.dequeueReusableCell(withReuseIdentifier: "SearchCell", for: indexPath) as? SearchCell else {
+//            print("couldn't locatye custom cell")
+//            return}
+//
+//        let factToSegue = searchInfo[indexPath.row]
+//
+//        let objectToSave = UserQuizzModel.init(id: factToSegue.id, quizTitle: factToSegue.quizTitle, facts: factToSegue.facts, createdAt: Date.getISOTimestamp())
+//
+//        UserQuizzDataManager.addEntry(quiz: objectToSave)
+//
+//
+//        let objectSaved = UIAlertController.init(title: "Quiz was saved", message: nil, preferredStyle: .alert)
+//        let ok = UIAlertAction.init(title: "Ok", style: .default) { (UIAlertAction) in
+//            self.dismiss(animated: true, completion: nil)
+//        }
+//        objectSaved.addAction(ok)
+//        present(objectSaved, animated: true, completion: nil)
+//
+//    }
+//
+//
+//}

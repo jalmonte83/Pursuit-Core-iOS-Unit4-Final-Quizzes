@@ -27,9 +27,21 @@ class QuizzesViewController: UIViewController {
         self.quizzesView.myQuizzesCollectionView.register(QuizzCell.self, forCellWithReuseIdentifier: "QuizzCell")
         quizzesView.myQuizzesCollectionView.delegate = self
         quizzesView.myQuizzesCollectionView.dataSource = self
+        getDataFromDocumentsDirectory()
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        getDataFromDocumentsDirectory()
+    }
+    
+    func getDataFromDocumentsDirectory() {
+        
+        self.quizzes = UserQuizzDataManager.getUserQuizzes()
+        self.quizzesView.myQuizzesCollectionView.reloadData()
+        
+    }
 
     
 
@@ -37,13 +49,38 @@ class QuizzesViewController: UIViewController {
 
 extension QuizzesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return quizzes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = quizzesView.myQuizzesCollectionView.dequeueReusableCell(withReuseIdentifier: "QuizzCell", for: indexPath) as? QuizzCell else { return UICollectionViewCell() }
         cell.backgroundColor = .white
+        
+        cell.deleteItemButton.tag = indexPath.row
+        
+        let selectedQuiz = quizzes[indexPath.row]
+        
+        cell.quizzTopicLabel.text = selectedQuiz.quizTitle
+        
+        cell.deleteItemButton.addTarget(self, action: #selector(deleteStuff(_:)), for: .touchUpInside)
+        
         return cell
+    }
+    
+    @ objc func deleteStuff(_ sender: UIButton) {
+        
+        let index = sender.tag
+        let actionSheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        
+        let delete = UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive) { (delete) in
+            UserQuizzDataManager.delete(atIndex: index)
+            self.getDataFromDocumentsDirectory()
+            
+            
+        }
+        
+        actionSheet.addAction(delete)
+        present(actionSheet, animated: true)
     }
     
     

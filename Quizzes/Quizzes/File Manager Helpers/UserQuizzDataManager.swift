@@ -30,6 +30,7 @@ final class UserQuizzDataManager {
     static func getUserQuizzes() -> [UserQuizzModel] {
         let path = DataPersistenceManager.filepathToDocumentsDiretory(filename: filename).path
         
+        print("This is the path: \(path)")
         if FileManager.default.fileExists(atPath: path) {
             if let data = FileManager.default.contents(atPath: path) {
                 do {
