@@ -95,7 +95,12 @@ extension QuizzesViewController: UICollectionViewDelegateFlowLayout {
             print("didSelectItemAt cell nil")
             return
         }
+        
+        let quizToSegue = quizzes[indexPath.row]
         let detailedVC = QuizzDetailViewController()
+        detailedVC.quizSentFromMain = quizToSegue
+        
+        
       
         navigationController?.pushViewController(detailedVC, animated: true)
         

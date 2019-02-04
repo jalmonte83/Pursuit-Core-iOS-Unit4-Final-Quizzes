@@ -12,6 +12,9 @@ class QuizzDetailViewController: UIViewController {
 
     let quizzDetailView = QuizzDetailView()
     
+    var quizSentFromMain: UserQuizzModel?
+    var arrayOfFacts = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 self.view.backgroundColor = .white
@@ -19,6 +22,9 @@ self.view.backgroundColor = .white
         self.quizzDetailView.quizzDetailCollectionView.dataSource = self
         self.quizzDetailView.quizzDetailCollectionView.register(QuizzesDetailCell.self, forCellWithReuseIdentifier: "QuizzesDetailCell")
         
+        if let array = quizSentFromMain?.facts{
+        arrayOfFacts = array
+        }
     }
     
 
@@ -26,12 +32,14 @@ self.view.backgroundColor = .white
 
 extension QuizzDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return arrayOfFacts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = quizzDetailView.quizzDetailCollectionView.dequeueReusableCell(withReuseIdentifier: "QuizzesDetailCell", for: indexPath) as? QuizzesDetailCell else { return UICollectionViewCell() }
         cell.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        
+        cell.quizzDetails.text = quizSentFromMain?.quizTitle
         return cell
     }
     
