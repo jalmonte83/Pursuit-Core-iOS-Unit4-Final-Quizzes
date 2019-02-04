@@ -47,22 +47,22 @@ extension QuizzDetailViewController: UICollectionViewDataSource {
 
 extension QuizzDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = quizzDetailView.quizzDetailCollectionView.cellForItem(at: indexPath) as? QuizzesDetailCell else {
-            print("didselctItemAt cell nil")
-            return
+        guard let cell = quizzDetailView.quizzDetailCollectionView.cellForItem(at: indexPath) as? QuizzesDetailCell else { return }
+        
+        if cell.quizzDetails.text == self.quizSentFromMain?.quizTitle{
+            UIView.transition(with: cell, duration: 1.0, options: .transitionFlipFromLeft, animations: {
+                cell.quizzDetails.text = self.arrayOfFacts[indexPath.row]
+            })
+        } else {
+            
+            UIView.transition(with: cell, duration: 1.0, options: [.transitionFlipFromLeft], animations: {
+                cell.quizzDetails.text = self.quizSentFromMain?.quizTitle
+            })
+        
         }
         
-        if indexPath.row == 0 {
-            UIView.transition(with: cell, duration: 1.0, options: .transitionFlipFromLeft, animations: {
-                cell.quizzDetails.text = self.arrayOfFacts[0]
-            })
-         
-        }
-        if indexPath.row == 1{
-            UIView.transition(with: cell, duration: 1.0, options: .transitionFlipFromLeft, animations: {
-                cell.quizzDetails.text = self.arrayOfFacts[1]
-            })
-        }
+        
+
         
     }
 }
