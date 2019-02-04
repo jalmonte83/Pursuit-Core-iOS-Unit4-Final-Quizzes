@@ -55,13 +55,14 @@ extension QuizzDetailViewController: UICollectionViewDelegateFlowLayout {
         if indexPath.row == 0 {
             UIView.transition(with: cell, duration: 1.0, options: .transitionFlipFromLeft, animations: {
                 cell.quizzDetails.text = self.arrayOfFacts[0]
-                
             })
-        } else if indexPath.row == 1{
+         
+        }
+        if indexPath.row == 1{
             UIView.transition(with: cell, duration: 1.0, options: .transitionFlipFromLeft, animations: {
                 cell.quizzDetails.text = self.arrayOfFacts[1]
-                
             })
         }
+        
     }
 }

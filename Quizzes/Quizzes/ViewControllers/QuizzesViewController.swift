@@ -75,11 +75,13 @@ extension QuizzesViewController: UICollectionViewDataSource {
         let delete = UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive) { (delete) in
             UserQuizzDataManager.delete(atIndex: index)
             self.getDataFromDocumentsDirectory()
-            
-            
         }
+        let cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: { (cancel) in
+            self.dismiss(animated: true, completion: nil)
+        })
         
         actionSheet.addAction(delete)
+        actionSheet.addAction(cancel)
         present(actionSheet, animated: true)
     }
     
@@ -88,9 +90,6 @@ extension QuizzesViewController: UICollectionViewDataSource {
 
 extension QuizzesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        //let quizzToSegue = bookInfoForCollectionView[indexPath.row]
-        
         guard let cell = collectionView.cellForItem(at: indexPath) as? QuizzCell else {
             print("didSelectItemAt cell nil")
             return
