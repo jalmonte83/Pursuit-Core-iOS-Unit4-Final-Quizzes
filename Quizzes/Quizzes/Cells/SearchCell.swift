@@ -7,8 +7,16 @@
 //
 
 import UIKit
+protocol AddButtonDelegate: AnyObject {
+    
+    func addQuizzButton()
+    
+}
 
 class SearchCell: UICollectionViewCell {
+    
+    var delegate: AddButtonDelegate?
+    
     lazy var searchQuizzTopicLabel: UILabel = {
         let label = UILabel()
         label.text = "Topic goes here"
@@ -20,8 +28,15 @@ class SearchCell: UICollectionViewCell {
     lazy var addItemButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "add-icon-filled"), for: .normal)
+        button.addTarget(self, action: #selector(addQuizButtonPressed), for: .touchUpInside)
+
         return button
     }()
+    
+    @objc func addQuizButtonPressed() {
+        delegate?.addQuizzButton()
+    }
+
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)

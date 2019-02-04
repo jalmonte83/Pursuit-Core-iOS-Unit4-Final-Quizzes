@@ -8,16 +8,26 @@
 
 import UIKit
 
-class ProfileView: UIView {
+protocol ImageButtonDelegate: AnyObject {
+    //func setImageFromLibrary()
+}
 
+class ProfileView: UIView {
+    
+    var delegate: ImageButtonDelegate?
+    
     lazy var profileImageButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "profile-unfilled"), for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
         button.showsTouchWhenHighlighted = true
-        
+        button.addTarget(self, action: #selector(imageButtonPressed), for: .touchUpInside)
         return button
     }()
+    
+    @objc func imageButtonPressed() {
+      //  delegate?.setImageFromLibrary()
+    }
     
     lazy var userNameLabel: UILabel = {
         let label = UILabel()
@@ -25,7 +35,7 @@ class ProfileView: UIView {
         label.textAlignment = .center
         return label
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         self.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)

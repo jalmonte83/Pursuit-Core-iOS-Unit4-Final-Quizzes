@@ -26,14 +26,13 @@ class CreateViewController: UIViewController {
     
     
     @objc func createQuizz() {
-        
+       
     }
     
     @objc func cancelCreate() {
         createView.quizTitleTextField.text = ""
         createView.factOne.text = ""
         createView.factTwo.text = ""
-        //createView.
     }
     
 }

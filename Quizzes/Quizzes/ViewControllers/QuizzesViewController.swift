@@ -12,7 +12,13 @@ class QuizzesViewController: UIViewController {
 
     let quizzesView = QuizzesView()
     
-    
+    var quizzes = [UserQuizzModel]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.quizzesView.myQuizzesCollectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

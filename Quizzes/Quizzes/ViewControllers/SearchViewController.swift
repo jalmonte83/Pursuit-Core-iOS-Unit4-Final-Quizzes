@@ -23,7 +23,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .blue
+        self.view.backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
         self.view.addSubview(searchQuizzesView)
         navigationItem.title = "Search Quizzes Online"
         self.searchQuizzesView.searchQuizzesCollectionView.register(SearchCell.self, forCellWithReuseIdentifier: "SearchCell")
@@ -56,18 +56,12 @@ extension SearchViewController: UICollectionViewDataSource {
         let cellInfo = searchInfo[indexPath.row]
         cell.backgroundColor = .white
         cell.searchQuizzTopicLabel.text = cellInfo.quizTitle
-        cell.addItemButton.addTarget(self, action: #selector(actionButtonPressed(_:)), for: .touchUpInside)
         cell.addItemButton.tag = indexPath.row
-        
-        cell.addItemButton.addTarget(self, action: #selector(actionButtonPressed(_:)), for: .touchUpInside)
+        cell.addItemButton.addTarget(self, action: #selector(addButtonPressed(_:)), for: .touchUpInside)
         return cell
     }
     
-    @objc func actionButtonPressed(_ sender: UIButton) {
-        
-        
-        
-        let index = sender.tag
+    @objc func addButtonPressed(_ sender: UIButton) {
         
             
             
